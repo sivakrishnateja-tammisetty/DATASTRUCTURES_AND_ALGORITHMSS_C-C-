@@ -20,3 +20,417 @@ DS: is used to maintain data in organized manner.so it can eaislr accesed and ma
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 *ARRAY:is a type of data structure which stores multiple data of smiliar type.
+
+*USES:
+  -data stores
+  -data access is easy
+  -array size is fixed
+
+*OPERATIONS IN ARRAY:
+  -Sorting
+  -searching
+
+
+*code in c:
+#include <stdio.h>
+#include<stdlib.h>
+int main()
+{
+    int *p=(int*)malloc(5*sizeof(int));
+    for(int i=0;i<5;i++)
+    {
+        scanf("%d",&p[i]);
+    }
+    for(int i=0;i<5;i++)
+    {
+        printf("%d ",p[i]);
+    }
+}
+
+*code in c++:
+#include<iostream>
+using namespace std;
+int main()
+{
+    int *p=new  int[5];
+    for(int i=0;i<5;i++)
+    {
+        cin>>p[i];
+    }
+    for(int i=0;i<5;i++)
+    {
+        cout<<p[i]<<" ";
+    }
+
+    return 0;
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+*STACK: LIFO(Last In First Out)
+*Implementation of stack using  Arraya & Linkedlist.
+
+*Applications:
+  -Recursion
+  -Infix and postfix expressions
+
+*OPerations of stack:
+  push - Adding data to the stack.
+  pop -Removing data from the stack.
+  peek -Accessing the top value of the stack.
+  display -Print the data in the stack.
+
+
+C Code:
+#include <stdio.h>
+#define SIZE 5
+int top=-1;
+int stack[SIZE];
+void push()
+{
+    if(top==SIZE-1)
+    {
+        printf("Stack was full\n");
+    }
+    else{
+        top++;
+        int val;
+        printf("Enter value:");
+        scanf("%d",&val);
+        stack[top]=val;
+        printf("PUSH was successfully\n");
+    }
+   
+}
+void pop()
+{
+    if(top ==-1)
+    {
+        printf("Stack was empty\n");
+    }
+    else{
+        top--;
+        printf("POP was successfully\n");
+    }
+    
+}
+void peek()
+{
+    if(top==-1)
+    {
+        printf("Stack was empty\n");
+    }
+    else{
+        printf("%d ",stack[top]);
+        printf("Peek was successfully!\n");
+    }
+    
+}
+void display()
+{
+    if(top==-1)
+    {
+        printf("Stack was empty!\n");
+    }
+    else
+    {
+        for(int i=0;i<=top;i++)
+        {
+            printf("%d ",stack[i]);
+        }
+    }
+}
+int main()
+{
+    printf("Implementation of stack using array\n");
+    while(1)
+    {
+        int option;
+        printf("1) push 2)pop 3) peek 4)dsplay\n");
+        scanf("%d",&option);
+        if(option==1)
+        {
+            push();
+        }
+        else if(option ==2)
+        {
+            pop();
+        }
+        else if(option ==3)
+        {
+            peek();
+        }
+        else if(option==4)
+        {
+            display();
+        }
+        else
+        {
+            break;
+        }
+    }
+    return 0;
+}
+
+
+
+
+Code in C++:
+#include <iostream>
+#define SIZE 5
+using namespace std;
+int top=-1;
+int stack[SIZE];
+void push()
+{
+    if(top==SIZE-1)
+    {
+        cout<<"Stack was full\n";
+    }
+    else{
+        top++;
+        int val;
+        cout<<"Enter value:";
+        cin>>val;
+        stack[top]=val;
+      cout<<"PUSH was successfully\n";
+    }
+   
+}
+void pop()
+{
+    if(top ==-1)
+    {
+        cout<<"Stack was empty\n";
+    }
+    else{
+        top--;
+       cout<<"POP was successfully\n";
+    }
+    
+}
+void peek()
+{
+    if(top==-1)
+    {
+        cout<<"Stack was empty\n";
+    }
+    else{
+        cout<<stack[top];
+      cout<<"Peek was successfully!\n";
+    }
+    
+}
+void display()
+{
+    if(top==-1)
+    {
+        cout<<"Stack was empty!\n";
+    }
+    else
+    {
+        for(int i=0;i<=top;i++)
+        {
+            cout<<stack[i]<<" ";
+        }
+    }
+}
+int main()
+{
+    cout<<"Implementation of stack using array\n";
+    while(1)
+    {
+        int option;
+        cout<<"1) push 2)pop 3) peek 4)dsplay\n";
+        cin>>option;
+        if(option==1)
+        {
+            push();
+        }
+        else if(option ==2)
+        {
+            pop();
+        }
+        else if(option ==3)
+        {
+            peek();
+        }
+        else if(option==4)
+        {
+            display();
+        }
+        else
+        {
+            break;
+        }
+    }
+    return 0;
+}
+
+
+
+
+
+
+
+C Code:
+
+#include <stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node *link;
+};
+struct node *top=NULL;
+void push(int value)
+{
+    struct node *temp=(struct node*)malloc(sizeof(struct node*));
+    temp->data=value;
+    temp->link=NULL;
+    if(top ==NULL)
+    {
+        top=temp;
+    }
+    else
+    {
+        temp->link=top;
+        top=temp;
+    }
+}
+void pop()
+{
+    if(top==NULL)
+    {
+        printf("Stack was empty!");
+    }
+    else{
+        struct node*p=top;
+        top=top->link;
+        p->link=NULL;
+        free(p);
+
+    }  
+    
+}
+void peek()
+{
+    if(top==NULL)
+    {
+        printf("Stack was Empty!");
+    }
+    else{
+        printf("TOP Ele :%d\n",top->data);
+    }
+}
+
+void display()
+{
+    if(top==NULL)
+    {
+        printf("Stack was empty!\n");
+    }
+    else{
+        struct node *p=top;
+        while(p!=NULL)
+        {
+            printf("%d ",p->data);
+            p=p->link;
+        }
+    }
+}
+int main()
+{
+    push(10);
+    push(20);
+    push(30);
+    display();
+    peek();
+    pop();
+    peek();
+    display();
+        
+        
+    return 0;
+}
+
+
+C++ code:
+
+#include <iostream>
+using namespace std;
+struct node
+{
+    int data;
+    struct node *link;
+};
+struct node *top=NULL;
+void push(int value)
+{
+    struct node *temp=new node;
+    temp->data=value;
+    temp->link=NULL;
+    if(top ==NULL)
+    {
+        top=temp;
+    }
+    else
+    {
+        temp->link=top;
+        top=temp;
+    }
+}
+void pop()
+{
+    if(top==NULL)
+    {
+        cout<<"Stack was empty!\n";
+    }
+    else{
+        struct node*p=top;
+        top=top->link;
+        p->link=NULL;
+        free(p);
+
+    }  
+    
+}
+void peek()
+{
+    if(top==NULL)
+    {
+        cout<<"Stack was Empty!\n";
+    }
+    else{
+        cout<<"TOP Ele "<<top->data;
+    }
+}
+
+void display()
+{
+    if(top==NULL)
+    {
+        cout<<"Stack was empty!\n";
+    }
+    else{
+        struct node *p=top;
+        while(p!=NULL)
+        {
+            cout<<p->data<<" ";
+            p=p->link;
+        }
+    }
+}
+int main()
+{
+    push(10);
+    push(20);
+    push(30);
+    display();
+    peek();
+    pop();
+    peek();
+    display();
+        
+        
+    return 0;
+}
