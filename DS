@@ -1,0 +1,22 @@
+DS: is used to maintain data in organized manner.so it can eaislr accesed and manage.
+
+* WHY DS?
+  -To maintain proper structures.
+  -To decrease the time.
+
+* Hashing/Hash table ds
+
+*LINEAR DS: Here data should  be straight.
+  Array
+  stack
+ queue
+  linkedlist: singly linkedlist & doubly linkedinlist
+
+*NON-LINEAR DS: Here data should be graphical,both directions.
+  Graphs
+  Trees -Binary search tree
+  Heap
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+*ARRAY:is a type of data structure which stores multiple data of smiliar type.
