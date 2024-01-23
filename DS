@@ -69,7 +69,7 @@ int main()
 *STACK: LIFO(Last In First Out)
 *Implementation of stack using  Arraya & Linkedlist.
 
-*Applications:
+*Applications/Advantages:
   -Recursion
   -Infix and postfix expressions
 
@@ -434,3 +434,90 @@ int main()
         
     return 0;
 }
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+QUEUE:It follows FIFO(First In First Out)
+*Queue is a linear data structure.
+*Operations of queue:
+  Enqueue- Inserting elements into queue.
+  Dequeue- Removing the elements from queue.
+  peek -printing the element which is in the first position.
+  display -printing all elements from queue.
+
+*Advantages/Applications:
+ -Many applications lift in shopping malls
+
+
+*rear -> end of the queue.
+*front -> start of the queue.
+
+*Queue implementation using an array
+#include <iostream>
+using namespace std;
+#define SIZE 5
+int queue[SIZE];
+int rear=-1;
+int front =-1;
+void enqueue(int val)
+{
+    if(rear== SIZE-1)
+    {
+        cout<<"Queue was full!"<<endl;
+    }
+    else{       
+        if(front ==-1)
+        {
+            front=0;
+        }
+        rear++;
+        queue[rear]=val;
+        cout<<"Data was Enqueued successfully!"<<endl;
+    }
+}
+void dequeue()
+{
+    if(front ==-1 || front>rear)
+    {
+        front++;
+        cout<<"Data Dequeued successfully!"<<endl;
+    }
+}
+
+void peek()
+{
+    if(front ==-1 || front>rear)
+    {
+        cout<<"Queue was Empty!";
+    }
+    else{
+        cout<<"Top Element:"<<queue[front]<<endl;
+    }
+}
+void display()
+{
+    if(front==-1 || front>rear)
+    {
+        cout<<"Queue was empty!"<<endl;
+    }
+    else
+    {
+        for(int i=front;i<=rear;i++)
+        {
+            cout<<queue[i]<<" ";
+        }
+    }
+}
+int main() {
+    enqueue(10);
+    enqueue(20);
+    enqueue(30);
+    enqueue(40);
+    enqueue(50);
+    display();
+    peek();
+    dequeue();
+    peek();
+    display();
+
+    return 0;
+}
+  
