@@ -1,3 +1,471 @@
+*Data Structures is about how data can be stored in different structures.
+
+*Algorithms is about how to solve different problems, often by searching through and manipulating data structures.
+
+Theory about Data Structures and Algorithms (DSA) helps us to use large amounts of data to solve problems efficiently.
+
+
+
+*TYpes of Datastructures:
+  1.primitive Ds
+  2.Abstract DS
+
+  *Primitive Data Structures are basic data structures provided by programming languages to represent single values, such as integers, floating-point numbers, characters, and booleans.
+
+  *Abstract Data Structures are higher-level data structures that are built using primitive data types and provide more complex and specialized operations. Some common examples of abstract data structures include arrays, linked lists, stacks, queues, trees, and graphs.
+
+
+*what are Algorithms?
+
+  An algorithm is a set of step-by-step instructions to solve a given problem or achieve a specific goal.
+
+*Where is Data Structures and Algorithms Needed?
+  Data Structures and Algorithms (DSA) are used in virtually every software system, from operating systems to web applications.
+
+
+Algorithm ==>	A set of step-by-step instructions to solve a specific problem.
+
+Data Structure ==>	A way of organizing data so it can be used efficiently. Common data structures include arrays, linked lists, and binary trees.
+
+Time Complexity	 ==>A measure of the amount of time an algorithm takes to run, depending on the amount of data the algorithm is working on.
+
+Space Complexity ==>	A measure of the amount of memory an algorithm uses, depending on the amount of data the algorithm is working on.
+
+Recursion ==>	A programming technique where a function calls itself.
+
+Divide and Conquer	==>A method of solving complex problems by breaking them into smaller, more manageable sub-problems, solving the sub-problems, and combining the solutions. Recursion is often used when using this method in an algorithm.
+
+Brute Force	==>A simple and straight forward way an algorithm can work by simply trying all possible solutions and then choosing the best one.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                                   DSA SIMPLE ALGORITHM
+
+1.Implementing Fibanooci series upto 20 terms using for loop?
+
+#include <iostream>
+using namespace std;
+
+int main() { 
+int t1=0,t2=1;
+cout<<t1<<endl;
+cout<<t2<<endl;
+for(int i=0;i<18;i++)
+{
+    int new_term=t1 + t2;
+    cout<<new_term<<endl;
+    t1=t2;
+    t2=new_term;
+}
+    return 0;
+}
+
+
+2.Impelemtation of fibanocci series using recursion?
+
+#include<iostream>
+using namespace std;
+
+int count=0;
+void fibanocci(int t1,int t2)
+{
+    
+    if(count<18)
+    {
+        int new_term=t1+t2;
+        cout<<new_term<<endl;
+        t1=t2;
+        t2=new_term;
+        count++;
+        fibanocci(t1,t2);
+    }
+    else{
+        return;
+    }
+}
+int main()
+{
+    cout<<"0"<<endl;
+    cout<<"1"<<endl;
+    fibanocci(0,1);
+}
+
+
+3. Finding The nth Fibonacci Number Using Recursion?
+#include<iostream>
+using namespace std;
+int nth_fib(int n)
+{
+    if(n<=1)
+    {
+        return n;
+    }
+    else{
+        return nth_fib(n-1) + nth_fib(n-2);
+    }
+}
+
+int main()
+{
+    int term;
+    cout<<"Which term you want to find:";
+    cin>>term;
+    cout<<nth_fib(term);
+}
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      DSA ARRAYS
+*An array is a data structure used to store multiple elements.
+
+EG:FInd the lowest value in an array
+#include<iostream>
+using namespace std;
+int main()
+{
+    int a[]={11,2,33,22,4,0};
+    int n=sizeof(a)/sizeof(a[0]);
+    int minValue=a[0];
+    for(int i=0;i<n;i++)
+    {
+     if(a[i]<minValue)
+        {
+         minValue=a[i];
+        }
+    }
+    cout<<"Min value :"<<minValue<<endl;
+}
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                          DSA BUBBLE SORT
+
+*Bubble Sort is a simplest sorting algorithm that sorts an array from the lowest value to the highest value by adjacent swaps.
+
+*How it works:
+
+  Go through the array, one value at a time.
+  For each value, compare the value with the next value.
+  If the value is higher than the next one, swap the values so that the highest value comes last.
+  Go through the array as many times as there are values in the array.
+
+
+*Bubble Sort Implementation:
+
+  An array with values to sort.
+  An inner loop that goes through the array and swaps values if the first value is higher than the next value. This loop must loop through one less value each time it runs.
+  An outer loop that controls how many times the inner loop must run. For an array with n values, this outer loop must run n-1 times.
+
+* Time complexity: O(N^2)
+
+Eg:
+#include<iostream>
+using namespace std;
+int main()
+{
+    int a[]={11,22,3,2,5,0};
+    int n=sizeof(a)/sizeof(a[0]);
+    for(int i=0;i<n-1;i++)
+    {
+        for(int j=0;j<n-1-i;j++)
+        {
+            if(a[j]>a[j+1])
+            {
+                int temp=a[j];
+                a[j]=a[j+1];
+                a[j+1]=temp;
+            }
+        }
+    }
+
+    for(int i=0;i<n;i++)
+    {
+        cout<<a[i]<<" ";
+    }
+}
+
+
+
+Eg: Improved code
+#include<iostream>
+using namespace std;
+int main()
+{
+    int a[]={11,22,3,2,5,0};
+    int n=sizeof(a)/sizeof(a[0]);
+    for(int i=0;i<n-1;i++)
+    {
+        bool swapped=false;
+        for(int j=0;j<n-1-i;j++)
+        {
+            if(a[j]>a[j+1])
+            {
+                int temp=a[j];
+                a[j]=a[j+1];
+                a[j+1]=temp;
+                swapped=true;
+            }
+        }
+        if(!swapped)
+        {
+            break;
+        }
+    }
+
+    for(int i=0;i<n;i++)
+    {
+        cout<<a[i]<<" ";
+    }
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                                                                    DSA SELECTION SORT
+
+*The Selection Sort algorithm finds the lowest value in an array and moves it to the front of the array.
+
+
+*How it works:
+
+  Go through the array to find the lowest value.
+  Move the lowest value to the front of the unsorted part of the array.
+  Go through the array again as many times as there are values in the array.
+
+
+*Selection Sort Implementation
+  To implement the Selection Sort algorithm in a programming language, we need:
+
+    An array with values to sort.
+    An inner loop that goes through the array, finds the lowest value, and moves it to the front of the array. This loop must loop through one less value each time it runs.
+    An outer loop that controls how many times the inner loop must run. For an array with n values, this outer loop must run n−1 times.
+
+
+*Time complexity: O(N^2)
+
+
+Eg:
+#include<iostream>
+using namespace std;
+void display(int *a,int n)
+{
+    for(int i=0;i<n;i++)
+    {
+        cout<<a[i]<<" ";
+    }
+}
+int main()
+{
+    int a[]={11,2,3,44,0};
+    int n=sizeof(a)/sizeof(a[0]);
+    int i,j,min_index;
+    for(int i=0;i<n-1;i++)
+    {
+        min_index=i;
+        for(j=i+1;j<n;j++)
+        {
+            if(a[j]<a[min_index])
+            {
+                min_index=j;
+            }
+        }
+       int temp=a[min_index];
+       a[min_index]=a[i];
+       a[i]=temp;
+    }
+    display(a,n);
+    return 0;
+}
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                                                                          DSA INSERTION SORT
+
+*The Insertion Sort algorithm uses one part of the array to hold the sorted values, and the other part of the array to hold values that are not sorted yet.
+
+
+*HOW IT WORKS:
+
+  Take the first value from the unsorted part of the array.
+  Move the value into the correct place in the sorted part of the array.
+  Go through the unsorted part of the array again as many times as there are values.
+
+
+
+*Time complexity : O(N^2)
+
+Eg:
+#include<iostream>
+using namespace std;
+int main()
+{
+    int a[]={11,2,3,1,0,9};
+    int n=sizeof(a)/sizeof(a[0]);
+    for(int i=1;i<n;i++)
+    {
+        int key=a[i];
+        int j=i-1;
+        while(j>=0 && a[j]>key)
+        {
+            a[j+1]=a[j];
+            j--;
+        }
+        a[j+1]=key;
+    }
+    for(int i=0;i<n;i++)
+    {
+        cout<<a[i]<<" ";
+    }
+
+}
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                                                                       DSA LINEAR SEARCH
+
+*The Linear Search algorithm searches through an array and returns the index of the value it searches for.
+
+Time complexity : O(N)
+#include<iostream>
+using namespace std;
+int l_search(int *a,int n,int key)
+{
+    for(int i=0;i<n;i++)
+    {
+        if(a[i]==key)
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+int main()
+{
+   int a[]={11,22,3,5,6,9,7};
+   int n=sizeof(a)/sizeof(a[0]);
+   int key;
+   cout<<"Enter key you want to search:";
+   cin>>key;
+   int res=l_search(a,n,key);
+   cout<<res;
+
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                                DSA BINARY SEARCH
+
+
+*The Binary Search algorithm searches through an array and returns the index of the value it searches for.
+
+* Time complexity : O(log 2 N)
+
+#include<iostream>
+using namespace std;
+int b_search(int *a,int key,int n)
+{
+    int low=0;
+    int high=n-1;
+    while(low<=high)
+    {
+        int mid=low+high/2;
+        if(a[mid]==key)
+        {
+            return  mid;
+           
+        }
+        else if(a[mid]<key)
+        {
+            low=mid+1;
+        }
+        else{
+            high=mid-1;
+        }
+
+    }
+    return -1;
+}
+int main()
+{
+   int a[]={11,22,3,5,6,9,7};
+   int n=sizeof(a)/sizeof(a[0]);
+   int key;
+   cout<<"Enter key you want to search:";
+   cin>>key;
+   int res=b_search(a,key,n);
+   cout<<res;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 DS: is used to maintain data in organized manner.so it can eaislr accesed and manage.
 
 * WHY DS?
@@ -67,7 +535,7 @@ int main()
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 *STACK: LIFO(Last In First Out)
-*Implementation of stack using  Arraya & Linkedlist.
+*Implementation of stack using  Array & Linkedlist.
 
 *Applications/Advantages:
   -Recursion
