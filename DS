@@ -810,75 +810,268 @@ int main()
 
 
 
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                            DSA LINKEDLIST INTRODUCTION
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+*Linkedlist  is a linear data structure
 
+*Advantages:
+  1.unlimited size(not fixed size like an array).
+  2.Deletion is done at any position.
+  3.Memory can be saved.
 
 
+*Disadvantages:
+  1. For access data should take more time compared to arrays.
 
 
 
+*Types of Linkedlist:
+  1.Singly Linked list
+  2.Doubly Linked list
+  3.Circular Linked list
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                             DSA SINGLY LINKED LIST
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+*Singly linkedlist is a type of linked list, where each node contains data and reference(link or pointer) to the next node in the sequence.
+*The last node in a singly linked list has typically NULL reference indicating the end of the list.
+*Singly linked list has only forward direction (from left->right).
+
+
+*Advantages:
+
+  1.Unlimited size
+  2.Doesn't waste memory
+
+
+*Disadvantages:
+  1.Takes more time to access data in linked list.
+
+
+*Operations in a singly Linked list:
+
+  1.Insertion
+    1.1 Insertion at any specified position
+    1.2 Insertion at end of list
+
+  2.Deletion : we can delete any value which is at any specified position
+
+
+  3.Searching: To check whether target value is present in the list or not.
+
+
+
+
+
+
+
+
+Eg1: creation  and setting links and printing linkedlist manually
+
+#include<iostream>
+using namespace std;
+struct node{
+    int data;
+    struct node*link;
+};
+void print_list(struct node**head)
+{
+    struct node *p=*head;
+    while(p !=NULL)
+    {
+        cout<<p->data<<" ";
+        p=p->link;
+    }
+    cout<<endl;
+}
+int main()
+{
+    struct node *head=NULL;
+    struct node *first=new node;
+    struct node*second=new node;
+    struct node*third=new node;
+    head=first;
+    first->data=10;
+    first->link=second;
+    second->data=20;
+    second->link=third;
+    third->data=30;
+    third->link=NULL;
+    print_list(&head);
+}
+
+o/p:10 20 30
+
+
+
+
+
+
+Eg2:Insertion at end of the list
+
+
+#include<iostream>
+using namespace std;
+struct node
+{
+    int data;
+    struct node*link;
+};
+void insertAtEnd(struct node**head)
+{
+    struct node *temp=new node;
+    int val;
+    cout<<"Enter value:";
+    cin>>val;
+    temp->data=val;
+    temp->link=NULL;
+    struct node*p=*head;
+    if(p==NULL)
+    {
+        *head=temp;// Initially linkedlist was empty, we directly insert element into head only
+    }
+    else{
+        while(p->link !=NULL)
+        {
+            p=p->link;
+        }
+        p->link=temp;
+    }
+cout<<"Element inserted successfully!"<<endl;
+
+}
+void print_list(struct node**head)
+{
+    cout<<"Elements are:\n";
+    struct node *p=*head;
+    while(p !=NULL)
+    {
+        cout<<p->data<<" ";
+        p=p->link;
+    }
+    cout<<endl;
+}
+int main()
+{
+    struct node *head=NULL;
+
+    cout<<"singly linkedlist implementation"<<endl;
+    while(1)
+    {
+        int option;
+        cout<<"1) Insertion at end\n2) Insertion at specified position\n3) Deletion\n4) searching\n5)Display\n6) Exit"
+        <<endl;
+        cout<<"Enter your option";
+        cin>>option;
+        if(option ==1)
+        {
+            cout<<"Insert at end\n";
+            insertAtEnd(&head);
+        }
+        else if(option==2)
+        {
+            cout<<"Insert a specified position\n";
+            //insertAtSpecifiedPosition();
+        }
+        else if(option==3)
+        {
+            cout<<"Deletion\n";
+            //deletion();
+        }
+        else if(option==4)
+        {
+            cout<<"Searching\n";
+            //searching();
+        }
+        else if(option==5)
+        {
+            cout<<"display\n";
+            print_list(&head);
+        }
+        else
+        {
+            break;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
