@@ -839,7 +839,7 @@ int main()
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-                                                                             DSA SINGLY LINKED LIST
+                                                                              LINKED LIST
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 *Singly linkedlist is a type of linked list, where each node contains data and reference(link or pointer) to the next node in the sequence.
@@ -849,12 +849,37 @@ int main()
 
 *Advantages:
 
-  1.Unlimited size
-  2.Doesn't waste memory
+  1.Unlimited size(Dynamic size)
+  2.Memory can be saved.
+  3.Deletion can be done at any specified position.
 
 
 *Disadvantages:
-  1.Takes more time to access data in linked list.
+  1.Data access is time taking.
+
+
+*Types of Linkedlist:
+
+  1.Singly Linkedlist -> only forward direction
+  2.Doubly Linkedlist -> both left to right & right to left
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                        Singly Linkedlist
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+*Singly Linkedlist:
+ -----------------
+                  |->only forward direction.
+
+*Advantages:
+
+  1.Unlimited size.
+  2.Avoid memory waste.
+
+*Disadvantages:
+
+  1.Accessing data was not easy.
 
 
 *Operations in a singly Linked list:
@@ -872,17 +897,16 @@ int main()
 
 
 
+                                           SINGLY LINKED LIST CREATION(I CREATED 3 NODES MANUALLY)
+                                           -------------------------------------------------------
 
 
-
-Eg1: creation  and setting links and printing linkedlist manually
-
-#include<iostream>
+#include <iostream>
 using namespace std;
-struct node{
+ struct node{
     int data;
     struct node*link;
-};
+ };
 void print_list(struct node**head)
 {
     struct node *p=*head;
@@ -892,125 +916,30 @@ void print_list(struct node**head)
         p=p->link;
     }
     cout<<endl;
-}
-int main()
-{
-    struct node *head=NULL;
-    struct node *first=new node;
-    struct node*second=new node;
-    struct node*third=new node;
-    head=first;
-    first->data=10;
-    first->link=second;
-    second->data=20;
-    second->link=third;
-    third->data=30;
-    third->link=NULL;
-    print_list(&head);
-}
-
-o/p:10 20 30
-
-
-
-
-
-
-Eg2:Insertion at end of the list
-
-
-#include<iostream>
-using namespace std;
-struct node
-{
-    int data;
-    struct node*link;
-};
-void insertAtEnd(struct node**head)
-{
-    struct node *temp=new node;
-    int val;
-    cout<<"Enter value:";
-    cin>>val;
-    temp->data=val;
-    temp->link=NULL;
-    struct node*p=*head;
-    if(p==NULL)
-    {
-        *head=temp;// Initially linkedlist was empty, we directly insert element into head only
-    }
-    else{
-        while(p->link !=NULL)
-        {
-            p=p->link;
-        }
-        p->link=temp;
-    }
-cout<<"Element inserted successfully!"<<endl;
 
 }
-void print_list(struct node**head)
-{
-    cout<<"Elements are:\n";
-    struct node *p=*head;
-    while(p !=NULL)
-    {
-        cout<<p->data<<" ";
-        p=p->link;
-    }
-    cout<<endl;
-}
-int main()
-{
-    struct node *head=NULL;
+int main() {
+  struct node*head=NULL;
+  struct node*first=(struct node*)malloc(sizeof(struct node*));
+  struct node*second=(struct node*)malloc(sizeof(struct node*));
+  struct node*third=(struct node*)malloc(sizeof(struct node*));
+  head=first;
+  first->data=10;
+  first->link=second;
+  second->data=20;
+  second->link=third;
+  third->data=30;
+  third->link=NULL;
+  print_list(&head);
 
-    cout<<"singly linkedlist implementation"<<endl;
-    while(1)
-    {
-        int option;
-        cout<<"1) Insertion at end\n2) Insertion at specified position\n3) Deletion\n4) searching\n5)Display\n6) Exit"
-        <<endl;
-        cout<<"Enter your option";
-        cin>>option;
-        if(option ==1)
-        {
-            cout<<"Insert at end\n";
-            insertAtEnd(&head);
-        }
-        else if(option==2)
-        {
-            cout<<"Insert a specified position\n";
-            //insertAtSpecifiedPosition();
-        }
-        else if(option==3)
-        {
-            cout<<"Deletion\n";
-            //deletion();
-        }
-        else if(option==4)
-        {
-            cout<<"Searching\n";
-            //searching();
-        }
-        else if(option==5)
-        {
-            cout<<"display\n";
-            print_list(&head);
-        }
-        else
-        {
-            break;
-        }
-    }
+    return 0;
 }
 
+o/p: 10 20 30
 
 
-
-
-
-
-
+                                                                   SINGLY LINKEDLIST INSERTION AT END
+                                                                   ----------------------------------
 
 
 
