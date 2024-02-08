@@ -938,8 +938,121 @@ int main() {
 o/p: 10 20 30
 
 
-                                                                   SINGLY LINKEDLIST INSERTION AT END
-                                                                   ----------------------------------
+                                                                   IMPLEMENTATION OF SINGLY LINKEDLIST
+                                                                   ------------------------------------
+
+#include <iostream>
+using namespace std;
+ struct node{
+    int data;
+    struct node*link;
+ };
+void print_list(struct node**head)
+{
+  
+    struct node *p=*head;
+    if(p==NULL)
+    {
+      cout<<"Empty linkedlist\n";
+    }
+    while(p !=NULL)
+    {
+        cout<<p->data<<" ";
+        p=p->link;
+    }
+    cout<<endl;
+
+}
+void insert_at_end(struct node**head)
+{
+  struct node *temp=(struct node*)malloc(sizeof(struct node*));
+  int val;
+  cout<<"Enter a value:";
+  cin>>val;
+  temp->data=val;
+  temp->link=NULL;
+  struct node *p=*head;
+  if(p==NULL)
+  {
+    *head=temp;
+  }
+  else
+  {
+    while(p->link !=NULL)
+    {
+      p=p->link;
+    }
+    p->link=temp;
+  }
+
+}
+void insert_at_specified_position(struct node**head)
+{
+  int position,value;
+  cout<<"Enter position and data:\n";
+  cin>>position>>value;
+  int count=1;
+  struct node*p=*head;
+  while(p !=NULL)
+  {
+    if(position==count)
+    {
+      break;
+    }
+    p=p->link;
+    count++;
+  }
+  if(p==NULL)
+  {
+    cout<<"Invalid position\n";
+  }
+  else{
+    struct node*temp=new node;
+    temp->data=value;
+    temp->link=p->link;
+    p->link=temp;
+  }
+}
+int main() {
+  struct node*head=NULL;
+ 
+  cout<<"Implementing singly Linked list\n";
+ 
+  while(1)
+  {
+    int option;
+    cout<<"1)Insert at end\n2)Insert at specified position\n3)Delete an element\n4) search an element\n5)Display list\n6)Exit\n";
+    cin>>option;
+    if(option==1)
+    {
+      cout<<"Inserting an element at end of the list\n";
+      insert_at_end(&head);
+    }
+    else if(option==2)
+    {
+      cout<<"Inserting an element at specified position\n";
+      insert_at_specified_position(&head);
+    }
+    else if(option==3)
+    {
+      cout<<"Deletion of an element\n";
+      //deletion_of_an_element();
+    }
+    else if(option==4)
+    {
+      cout<<"Searching an element\n";
+      //search_an_element();
+    }
+    else if(option==5)
+    {
+      cout<<"Display elements in the linkedlist\n";
+      print_list(&head);
+    }
+
+  }
+
+    return 0;
+}
 
 
 
